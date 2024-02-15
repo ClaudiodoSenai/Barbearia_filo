@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //Serviços
 Route::post('servico/cadastro', [ServicoController::class, 'criarServico']);
 Route::get('servico/descricao', [ServicoController::class, 'pesquisarPorDescricao']);
-Route::get('servico/all',[ServicoController::class, 'retornarTodos']);
+Route::get('servico/all', [ServicoController::class, 'retornarTodos']);
 Route::post('servico/pesquisa/nome', [ServicoController::class, 'pesquisarPorNome']);
 Route::delete('servico/delete/{id}', [ServicoController::class, 'excluirServico']);
 Route::put('servico/update', [ServicoController::class, 'atualizarServico']);
@@ -53,11 +53,11 @@ Route::get('profissional/find/celular', [ProfissionalController::class, 'pesquis
 Route::get('profissional/find/email', [ProfissionalController::class, 'pesquisarPorEmail']);
 Route::get('profissional/find/{id}', [ProfissionalController::class, 'pesquisarPorId']);
 Route::post('profissional/atualizar/senha', [ProfissionalController::class, 'esqueciMinhaSenha']);
-Route::post('profissional/agendamento',[AgendaController::class,'criarHorarioProfissional' ]);
-Route::delete('profissional/agenda/delete/{id}',[AgendaController::class,'excluirHorario']);
-Route::put('profissional/agenda/atualizar/horarios', [AgendaController::class,'updateHorarios']);
+Route::post('profissional/agendamento', [AgendaController::class, 'criarHorarioProfissional']);
+Route::delete('profissional/agenda/delete/{id}', [AgendaController::class, 'excluirHorario']);
+Route::put('profissional/agenda/atualizar/horarios', [AgendaController::class, 'updateHorarios']);
 Route::get('profissional/agenda/find/datas', [AgendaController::class, 'pesquisarPorData']);
-Route::post('profissional/cadastrar/cliente',[ClienteController::class,'criarCliente']);
+Route::post('profissional/cadastrar/cliente', [ClienteController::class, 'criarCliente']);
 Route::put('profissional/cliente/update', [ClienteController::class, 'atualizarCliente']);
 Route::delete('profissional/cliente/delete/{id}', [ClienteController::class, 'excluirCliente']);
 Route::get('profissional/cliente/all', [ClienteController::class, 'retornarTodos']);
@@ -65,26 +65,26 @@ Route::get('profissional/cliente/all', [ClienteController::class, 'retornarTodos
 //Agendamento
 
 Route::get('agenda/horarios/profissionais', [AgendaController::class, 'retornarTodos']);
-Route::delete('agenda/delete/{id}',[AgendaController::class,'excluirHorario']);
-Route::put('agenda/atualizar/horarios', [AgendaController::class,'updateHorarios']);
+Route::delete('agenda/delete/{id}', [AgendaController::class, 'excluirHorario']);
+Route::put('agenda/atualizar/horarios', [AgendaController::class, 'updateHorarios']);
 Route::get('agenda/find/horario/{id}', [AgendaController::class, 'pesquisarPorIdAgenda']);
 Route::get('agenda/find/datas', [AgendaController::class, 'pesquisarPorData']);
 Route::post('agenda/find/data/', [AgendaController::class, 'pesquisarPorDataDoProfissional']);
 
 //Admin
-Route::post('admin/cadastrar/cliente',[ClienteController::class,'criarCliente']);
-Route::post('admin/cadastrar/profissional',[ProfissionalController::class,'criarProfissional']);
-Route::post('admin/cadastrar/servicos',[ServicoController::class,'criarServico']);
-Route::put('admin/atualizar/cliente', [ClienteController::class,'atualizarCliente']);
-Route::put('admin/atualizar/profissional', [ProfissionalController::class,'atualizarProfissional']);
-Route::put('admin/atualizar/servico', [ServicoController::class,'atualizarServico']);
-Route::delete('admin/cliente/delete/{id}',[ClienteController::class,'excluirCliente']);
-Route::delete('admin/profissional/delete/{id}',[ProfissionalController::class,'excluirProfissional']);
-Route::delete('admin/servico/delete/{id}',[ServicoController::class,'excluirServico']);
+Route::post('admin/cadastrar/cliente', [ClienteController::class, 'criarCliente']);
+Route::post('admin/cadastrar/profissional', [ProfissionalController::class, 'criarProfissional']);
+Route::post('admin/cadastrar/servicos', [ServicoController::class, 'criarServico']);
+Route::put('admin/atualizar/cliente', [ClienteController::class, 'atualizarCliente']);
+Route::put('admin/atualizar/profissional', [ProfissionalController::class, 'atualizarProfissional']);
+Route::put('admin/atualizar/servico', [ServicoController::class, 'atualizarServico']);
+Route::delete('admin/cliente/delete/{id}', [ClienteController::class, 'excluirCliente']);
+Route::delete('admin/profissional/delete/{id}', [ProfissionalController::class, 'excluirProfissional']);
+Route::delete('admin/servico/delete/{id}', [ServicoController::class, 'excluirServico']);
 Route::get('admin/profissional/all', [ProfissionalController::class, 'retornarTodos']);
-Route::get('admin/servico/all',[ServicoController::class, 'retornarTodos']);
+Route::get('admin/servico/all', [ServicoController::class, 'retornarTodos']);
 Route::get('admin/cliente/all', [ClienteController::class, 'retornarTodos']);
-Route::post('admin/criar-admin',[AdminController::class,'criarAdmin']);
+Route::post('admin/criar-admin', [AdminController::class, 'criarAdmin']);
 Route::get('admin/pagamento/retornarTodos', [TipoDePagamentoController::class, 'retornarTodos']);
 Route::put('admin/pagamento/update/{id}', [TipoDePagamentoController::class, 'updatePagamento']);
 Route::delete('admin/pagamento/excluir/{id}', [TipoDePagamentoController::class, 'excluirPagamento']);
@@ -97,10 +97,10 @@ Route::put('admin/atualizar', [AdminController::class, 'atualizarAdmin']);
 Route::get('admin/retornarTodos', [AdminController::class, 'retornarTodos']);
 Route::post('/login', [AdminController::class, 'login']);
 Route::get('admin/teste', [AdminController::class, 'verificaUsuarioLogado'])->middleware([
-        'auth:sanctum',
-        SetSanctumGuard::class,
-        IsAuthenticated::class
-    ]);
+    'auth:sanctum',
+    SetSanctumGuard::class,
+    IsAuthenticated::class
+]);
 
 //Rota das Formas de Pagamento
 
@@ -108,6 +108,3 @@ Route::post('pagamento/cadastrar', [TipoDePagamentoController::class, 'tipoPagam
 Route::delete('pagamento/excluir/{id}', [TipoDePagamentoController::class, 'excluirPagamento']);
 Route::put('pagamento/update/{id}', [TipoDePagamentoController::class, 'updatePagamento']);
 Route::get('pagamento/retornarTodos', [TipoDePagamentoController::class, 'retornarTodos']);
-
-
-
